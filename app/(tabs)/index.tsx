@@ -1,70 +1,207 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React, { useState } from "react";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  Pressable,
+} from "react-native";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Entypo from "@expo/vector-icons/Entypo";
+import Checkbox from "expo-checkbox";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const SafeAreaExample = () => {
+  const [isChecked, setChecked] = useState(false);
 
-export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <Text style={styles.text}>Welcome Back</Text>
+        <Text style={styles.textTitle}>Login to your account</Text>
+        <View style={styles.containerIcon}>
+          <FontAwesome
+            name="user"
+            size={20}
+            color="#931f1f"
+            style={styles.icon}
+          />
+          <TextInput
+            placeholderTextColor={"#931f1f"}
+            placeholder="Username"
+            style={styles.input}
+          />
+        </View>
+        <View style={styles.containerIcon}>
+          <Entypo name="lock" size={20} color="#931f1f" style={styles.icon} />
+          <TextInput
+            placeholderTextColor={"#931f1f"}
+            placeholder="Password"
+            style={styles.input}
+          />
+        </View>
+        <View style={styles.sectionHead}>
+          <View style={styles.sectionLeft}>
+            <Checkbox
+              style={styles.checkbox}
+              value={isChecked}
+              onValueChange={setChecked}
+              color={"#fff"}
+            />
+            <Text style={styles.paragraph}>Remember me</Text>
+          </View>
+          <View style={styles.sectionRight}>
+            <Text style={styles.textSectionRight}>Forgot Password?</Text>
+          </View>
+        </View>
+        <TouchableOpacity style={styles.buttonHead}>
+          <Text style={styles.logınText}>LOGIN</Text>
+        </TouchableOpacity>
+        <View style={styles.footerContent}>
+          <Text style={styles.footerHead}>
+            Dont have an account? <Text style={styles.footerSpan}>Sign up</Text>
+          </Text>
+        </View>
+
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          source={require("../../assets/images/blob-scatter-haikei.png")}
+          style={styles.image}
+          resizeMode="cover"
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      </View>
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#e9dada",
+    position: "relative",
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  containerIcon: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#e9dada",
+    width: "90%",
+    borderRadius: 8,
+    padding: 10,
+    top: 300,
+    zIndex: 20,
+    marginBottom: 20,
+    marginTop: 10,
+  },
+  image: {
+    flex: 1,
+    width: "100%",
+    borderRadius: 4,
+    marginTop: -360,
+  },
+  icon: {
+    marginRight: 10,
+  },
+  text: {
+    marginTop: 20,
+    fontSize: 50,
+    color: "#fff",
+    position: "relative",
+    top: 200,
+    fontWeight: "bold",
+    zIndex: 20,
+    flexDirection: "row",
+  },
+  textTitle: {
+    fontSize: 24,
+    color: "#fff",
+    zIndex: 20,
+    top: 210,
+    fontWeight: "800",
+  },
+  textInputHead: {
+    flexDirection: "row",
+  },
+  input: {
+    flex: 1,
+    height: 40,
+  },
+
+  sectionHead: {
+    flexDirection: "row",
+    gap: 80,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  sectionLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 20,
+    top: 300,
+    paddingEnd: 2,
+  },
+  sectionRight: {
+    zIndex: 20,
+    top: 300,
+  },
+  paragraph: {
+    fontSize: 15,
+    color: "#fff",
+    paddingEnd: 10,
+  },
+  checkbox: {
+    margin: 8,
+  },
+  textSectionRight: {
+    color: "#fff",
+    fontWeight: "900",
+  },
+  buttonHead: {
+    borderWidth: 1,
+    borderColor: "#d47923",
+    top: 340,
+    zIndex: 20,
+    backgroundColor: "#d47923",
+    padding: 10,
+    cursor: "pointer",
+    width: "85%",
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  logınText: {
+    color: "#931f1f",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  footerContent: {
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 20,
+    top: 350,
+  },
+  footerHead: {
+    color: "#fff",
+  },
+  footerSpan: {
+    fontWeight: "900",
+    textDecorationLine: "underline",
+    textDecorationColor: "#fff",
+    textDecorationStyle: "solid",
+    color: "#fff",
+    fontSize: 18,
   },
 });
+
+export default SafeAreaExample;
