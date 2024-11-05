@@ -1,3 +1,5 @@
+<strong>Sample design link:</strong>https://www.behance.net/gallery/136363747/Mobile-LoginSign-up-UI?tracking_source=search_projects_appreciations|mobile+login+screen+design&l=0
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
